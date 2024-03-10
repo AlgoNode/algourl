@@ -8,7 +8,11 @@ This utility allows to quickly online or offline a participation key, especially
 
 ### Installation
 
-(tbd)
+```bash
+go install github.com/algonode/algourl@latest
+```
+
+The `algourl` binary will be available (in most cases) @ `~/go/bin/algourl`
 
 ### Online an account with Mobile wallet 
 
@@ -16,12 +20,12 @@ This utility allows to quickly online or offline a participation key, especially
 </br>ℹ You do not need new key in case your online status got suspended for not voting.
 
 ```bash
-goal account changeonlinestatus -a 7THLM2QWR2VOGCLIQGGASSTHV6GBZAB2OMYRCDEQ2K5PXP42YKIAUKLOHM -t - | algourl 
+goal account changeonlinestatus -a 7THLM2QWR2VOGCLIQGGASSTHV6GBZAB2OMYRCDEQ2K5PXP42YKIAUKLOHM -t - | ~/go/bin/algourl 
 ```
 
 ### Offline an account with Mobile wallet 
 ```bash
-goal account changeonlinestatus -a 7THLM2QWR2VOGCLIQGGASSTHV6GBZAB2OMYRCDEQ2K5PXP42YKIAUKLOHM --online=0 -t - | algourl 
+goal account changeonlinestatus -a 7THLM2QWR2VOGCLIQGGASSTHV6GBZAB2OMYRCDEQ2K5PXP42YKIAUKLOHM --online=0 -t - | ~/go/bin/algourl 
 ```
 
 ## Installation (full)
