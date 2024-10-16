@@ -19,6 +19,7 @@ type AUrlTxn struct {
 type AUrlTxnKeyCommon struct {
 	Sender string `url:"-"`
 	Type   string `url:"type"`
+	Fee    *uint64 `url:"fee,omitempty"`
 }
 
 type AUrlTxnKeyreg struct {
@@ -74,6 +75,9 @@ func makeQRKeyRegRequest(encodedTxn []byte) (*AUrlTxn, error) {
 			VoteLast:        toPtr(uint64(txn.Txn.VoteLast)),
 			VoteKeyDilution: toPtrOrNil(txn.Txn.VoteKeyDilution),
 		},
+	}
+	if uint64(txn.Txn.Fee) != uint64(1000) {
+		kr.AUrlTxnKeyCommon.Fee =	toPtr(uint64(txn.Txn.Fee))
 	}
 
 	return kr, nil
