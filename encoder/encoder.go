@@ -86,3 +86,15 @@ func (krg AUrlTxn) Print() {
 	fmt.Println()
 	qrcode.Print(url)
 }
+
+func (krg AUrlTxn) ProduceQRCode() (string, error) {
+	url := krg.String()
+
+	// Print the QR code to the buffer
+	qrString, err := qrcode.GetString(url)
+	if err != nil {
+		return "", fmt.Errorf("failed to generate QR code: %w", err)
+	}
+
+	return qrString, nil
+}
