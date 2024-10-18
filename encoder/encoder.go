@@ -1,12 +1,12 @@
-package main
+package encoder
 
 import (
 	"fmt"
 
 	"github.com/algorand/go-algorand-sdk/v2/encoding/msgpack"
 	"github.com/algorand/go-algorand-sdk/v2/types"
+	qrcode "github.com/algorandfoundation/go-tinyqr"
 	"github.com/google/go-querystring/query"
-	qrcode "github.com/xi/go-tinyqr"
 )
 
 const ARC0026URLHANDLER = "algorand"
@@ -54,7 +54,7 @@ type RawTxn struct {
 	Txn types.Transaction `codec:"txn"`
 }
 
-func makeQRKeyRegRequest(encodedTxn []byte) (*AUrlTxn, error) {
+func MakeQRKeyRegRequest(encodedTxn []byte) (*AUrlTxn, error) {
 	var txn RawTxn
 
 	msgpack.Decode(encodedTxn, &txn)
