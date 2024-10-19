@@ -1,4 +1,4 @@
-module github.com/hashmapsdata2value/algourl
+module github.com/algonode/algourl
 
 go 1.21
 
