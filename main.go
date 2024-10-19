@@ -5,7 +5,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/hashmapsdata2value/algourl/encoder"
+	"github.com/algonode/algourl/encoder"
 )
 
 func main() {
