@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"io"
 	"os"
+
+	"github.com/algonode/algourl/encoder"
 )
 
 func main() {
@@ -20,7 +22,7 @@ func makeQRFromStdin() error {
 		return err
 	}
 
-	kr, err := makeQRKeyRegRequest(encodedTxn)
+	kr, err := encoder.MakeQRKeyRegRequest(encodedTxn)
 	if err != nil {
 		return err
 	}

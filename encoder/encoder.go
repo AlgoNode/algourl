@@ -1,12 +1,12 @@
-package main
+package encoder
 
 import (
 	"fmt"
 
 	"github.com/algorand/go-algorand-sdk/v2/encoding/msgpack"
 	"github.com/algorand/go-algorand-sdk/v2/types"
+	qrcode "github.com/algorandfoundation/go-tinyqr"
 	"github.com/google/go-querystring/query"
-	qrcode "github.com/xi/go-tinyqr"
 )
 
 const ARC0026URLHANDLER = "algorand"
@@ -54,7 +54,7 @@ type RawTxn struct {
 	Txn types.Transaction `codec:"txn"`
 }
 
-func makeQRKeyRegRequest(encodedTxn []byte) (*AUrlTxn, error) {
+func MakeQRKeyRegRequest(encodedTxn []byte) (*AUrlTxn, error) {
 	var txn RawTxn
 
 	msgpack.Decode(encodedTxn, &txn)
@@ -89,4 +89,16 @@ func (krg AUrlTxn) Print() {
 	fmt.Println(url)
 	fmt.Println()
 	qrcode.Print(url)
+}
+
+func (krg AUrlTxn) ProduceQRCode() (string, error) {
+	url := krg.String()
+
+	// Print the QR code to the buffer
+	qrString, err := qrcode.GetString(url)
+	if err != nil {
+		return "", fmt.Errorf("failed to generate QR code: %w", err)
+	}
+
+	return qrString, nil
 }
